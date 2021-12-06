@@ -23,6 +23,7 @@ import { RatingStars } from "src/components/Scenes/SceneDetails/RatingStars";
 import { PerformerDetailsPanel } from "./PerformerDetailsPanel";
 import { PerformerOperationsPanel } from "./PerformerOperationsPanel";
 import { PerformerScenesPanel } from "./PerformerScenesPanel";
+import { PerformerSearchPanel } from "./PerformerSearchPanel";
 import { PerformerGalleriesPanel } from "./PerformerGalleriesPanel";
 import { PerformerMoviesPanel } from "./PerformerMoviesPanel";
 import { PerformerImagesPanel } from "./PerformerImagesPanel";
@@ -69,7 +70,8 @@ const PerformerPage: React.FC<IProps> = ({ performer }) => {
     tab === "images" ||
     tab === "movies" ||
     tab === "edit" ||
-    tab === "operations"
+    tab === "operations" ||
+    tab === "search"
       ? tab
       : "details";
   const setActiveTabKey = (newTab: string | null) => {
@@ -169,11 +171,11 @@ const PerformerPage: React.FC<IProps> = ({ performer }) => {
           onImageEncoding={onImageEncoding}
         />
       </Tab>
-      <Tab
-        eventKey="operations"
-        title={intl.formatMessage({ id: "operations" })}
-      >
+      <Tab eventKey="operations" title={intl.formatMessage({ id: "operations" })}>
         <PerformerOperationsPanel performer={performer} />
+      </Tab>
+      <Tab eventKey="search" title={intl.formatMessage({ id: "search" })}>
+        <PerformerSearchPanel performer={performer} />
       </Tab>
     </Tabs>
   );
